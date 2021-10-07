@@ -1,7 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/app_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/tvAppName"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="@string/app_name_with_space"
+        android:textSize="@dimen/tv_app_title_text_size"
+        android:layout_marginTop="@dimen/tv_app_title_margin_top"
+        android:textColor="@color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <LinearLayout
+        android:id="@+id/llLocationInfo"
+        android:orientation="vertical"
+        android:layout_marginStart="@dimen/location_info_margin_start"
+        app:layout_constraintTop_toBottomOf="@+id/tvAppName"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tv_app_title_margin_top">
+
+        <TextView
+            android:id="@+id/tvLatitude"
+            android:layout_marginTop="@dimen/tv_location_info_margin_top"
+            android:text="@string/tv_latitude"
+            android:textSize="@dimen/tv_location_info_text_size"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvLongitude"
+            android:layout_marginTop="@dimen/tv_location_info_margin_top"
+            android:text="@string/tv_longitude"
+            android:textSize="@dimen/tv_location_info_text_size"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvAccuracy"
+            android:layout_marginTop="@dimen/tv_location_info_margin_top"
+            android:text="@string/tv_accuracy"
+            android:textSize="@dimen/tv_location_info_text_size"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvAltitude"
+            android:layout_marginTop="@dimen/tv_location_info_margin_top"
+            android:text="@string/tv_altitude"
+            android:textSize="@dimen/tv_location_info_text_size"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_marginTop="@dimen/tv_location_info_margin_top"
+            android:text="@string/tv_address"
+            android:textSize="@dimen/tv_location_info_text_size"
+            android:textColor="@color/white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">HikersGuide</string>
+    <string name="app_name_with_space">Hikers Guide</string>
+
+    <string name="tv_latitude">Latitude: </string>
+    <string name="tv_longitude">Longitude: </string>
+    <string name="tv_accuracy">Accuracy: </string>
+    <string name="tv_altitude">Altitude: </string>
+    <string name="tv_address">Address: </string>
 </resources>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="tv_app_title_text_size">32sp</dimen>
+    <dimen name="tv_app_title_margin_top">24dp</dimen>
+
+    <dimen name="tv_location_info_text_size">18sp</dimen>
+    <dimen name="tv_location_info_margin_top">16dp</dimen>
+    <dimen name="location_info_margin_start">32dp</dimen>
+</resources>
