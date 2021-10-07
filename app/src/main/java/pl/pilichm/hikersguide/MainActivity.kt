@@ -3,14 +3,16 @@ package pl.pilichm.hikersguide
 import android.Manifest.permission.ACCESS_COARSE_LOCATION
 import android.Manifest.permission.ACCESS_FINE_LOCATION
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.os.Bundle
 import android.os.Looper
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
+import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
     private var mLocationRequest: LocationRequest? = null
@@ -70,10 +72,36 @@ class MainActivity : AppCompatActivity() {
      * Function called after location update, it refreshes information displayed to the user.
      * */
     private fun onLocationChanged(location: Location){
-        Toast.makeText(
-            applicationContext,
-            "Location: ${location.latitude}",
-            Toast.LENGTH_SHORT).show()
+        /**
+         * Display location info.
+         * */
+        tvLatitude.text = StringBuilder().append(resources.getString(R.string.tv_latitude))
+            .append(resources.getString(R.string.space))
+            .append(String.format("%.2f", location.latitude))
+
+        tvLongitude.text = StringBuilder().append(resources.getString(R.string.tv_longitude))
+            .append(resources.getString(R.string.space))
+            .append(String.format("%.2f", location.longitude))
+
+        tvAccuracy.text = StringBuilder().append(resources.getString(R.string.tv_accuracy))
+            .append(resources.getString(R.string.space))
+            .append(String.format("%.1f", location.accuracy))
+
+        tvAltitude.text = StringBuilder().append(resources.getString(R.string.tv_altitude))
+            .append(resources.getString(R.string.space))
+            .append(String.format("%.1f", location.altitude))
+
+        /**
+         * Display address info.
+         * */
+        val geocoder = Geocoder(this, Locale.getDefault())
+        val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
+
+        if (!address.isNullOrEmpty()){
+            tvAddress.text = StringBuilder().append(resources.getString(R.string.tv_address)).append("\n")
+                .append(address[0].locality).append("\n").append(address[0].postalCode).append("\n")
+                .append(address[0].countryName)
+        }
     }
 
     /**
@@ -98,7 +126,7 @@ class MainActivity : AppCompatActivity() {
      * Request code for permission request.
      * */
     companion object {
-        const val UPDATE_INTERVAL = 2000L
+        const val UPDATE_INTERVAL = 1000L
         const val LOCATION_PERMISSION_REQUEST_CODE = 0
     }
 }

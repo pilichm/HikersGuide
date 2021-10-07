@@ -7,4 +7,5 @@
     <string name="tv_accuracy">Accuracy: </string>
     <string name="tv_altitude">Altitude: </string>
     <string name="tv_address">Address: </string>
+    <string name="space">   </string>
 </resources>
