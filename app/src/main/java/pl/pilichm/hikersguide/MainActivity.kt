@@ -11,15 +11,17 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.*
 import com.google.android.gms.location.LocationServices.getFusedLocationProviderClient
-import kotlinx.android.synthetic.main.activity_main.*
+import pl.pilichm.hikersguide.databinding.ActivityMainBinding
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
     private var mLocationRequest: LocationRequest? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         setUpLocationServices()
     }
@@ -75,19 +77,19 @@ class MainActivity : AppCompatActivity() {
         /**
          * Display location info.
          * */
-        tvLatitude.text = StringBuilder().append(resources.getString(R.string.tv_latitude))
+        binding.tvLatitude.text = StringBuilder().append(resources.getString(R.string.tv_latitude))
             .append(resources.getString(R.string.space))
             .append(String.format("%.2f", location.latitude))
 
-        tvLongitude.text = StringBuilder().append(resources.getString(R.string.tv_longitude))
+        binding.tvLongitude.text = StringBuilder().append(resources.getString(R.string.tv_longitude))
             .append(resources.getString(R.string.space))
             .append(String.format("%.2f", location.longitude))
 
-        tvAccuracy.text = StringBuilder().append(resources.getString(R.string.tv_accuracy))
+        binding.tvAccuracy.text = StringBuilder().append(resources.getString(R.string.tv_accuracy))
             .append(resources.getString(R.string.space))
             .append(String.format("%.1f", location.accuracy))
 
-        tvAltitude.text = StringBuilder().append(resources.getString(R.string.tv_altitude))
+        binding.tvAltitude.text = StringBuilder().append(resources.getString(R.string.tv_altitude))
             .append(resources.getString(R.string.space))
             .append(String.format("%.1f", location.altitude))
 
@@ -98,7 +100,7 @@ class MainActivity : AppCompatActivity() {
         val address = geocoder.getFromLocation(location.latitude, location.longitude, 1)
 
         if (!address.isNullOrEmpty()){
-            tvAddress.text = StringBuilder().append(resources.getString(R.string.tv_address)).append("\n")
+            binding.tvAddress.text = StringBuilder().append(resources.getString(R.string.tv_address)).append("\n")
                 .append(address[0].locality).append("\n").append(address[0].postalCode).append("\n")
                 .append(address[0].countryName)
         }
